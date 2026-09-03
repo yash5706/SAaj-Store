@@ -1,3 +1,4 @@
+
 /* =========================
    PRODUCTS
 ========================= */
@@ -7,13 +8,13 @@ const products = [];
 
 // 46 clothing products - ₹250
 
-for (let i = 0; i < 46; i++) {
+for (let i = 1; i < 46; i++) {
 
     let image;
 
     if (i === 0) {
 
-        image = "images/cloth.jpeg";
+        image = "images/cloth (1).jpeg";
 
     } else {
 
@@ -36,45 +37,56 @@ for (let i = 0; i < 46; i++) {
 
 }
 
-// 6 clothing products - ₹300 each
+
+// 6 clothing products - ₹300
+
 products.push(
+
     {
         category: "clothes",
         price: 300,
         image: "images/cloth (51).jpeg",
         sizes: ["S", "M", "L", "XL"]
     },
+
     {
         category: "clothes",
         price: 300,
         image: "images/cloth (52).jpeg",
         sizes: ["S", "M", "L", "XL"]
     },
+
     {
         category: "clothes",
         price: 300,
         image: "images/cloth (53).jpeg",
         sizes: ["S", "M", "L", "XL"]
     },
+
     {
         category: "clothes",
         price: 300,
         image: "images/cloth (54).jpeg",
         sizes: ["S", "M", "L", "XL"]
     },
+
     {
         category: "clothes",
         price: 300,
         image: "images/cloth (55).jpeg",
         sizes: ["S", "M", "L", "XL"]
     },
+
     {
         category: "clothes",
         price: 300,
         image: "images/cloth (56).jpeg",
         sizes: ["S", "M", "L", "XL"]
     }
+
 );
+
+
 // 4 clothing products - ₹350
 
 products.push(
@@ -268,7 +280,7 @@ function displayProducts() {
         productBox.innerHTML = `
 
             <div
-                class="product-image-wrapper"
+                class={"product-image-wrapper"
                 onclick="openQuickView(${productIndex})">
 
                 <img
@@ -496,6 +508,21 @@ function addQuickToCart() {
 
 
 /* =========================
+   PRODUCT IMAGE LINK
+========================= */
+
+function getImageUrl(imagePath) {
+
+    return new URL(
+        imagePath,
+        window.location.href
+    ).href;
+
+}
+
+
+
+/* =========================
    QUICK VIEW WHATSAPP
 ========================= */
 
@@ -523,20 +550,28 @@ function orderQuickProduct() {
         products[quickProductIndex];
 
 
+    const imageUrl =
+        getImageUrl(product.image);
+
+
     const message =
-        "Hello SAaj! I want to order this product.%0A%0A" +
+
+        "Hello SAaj! I want to order this product.\n\n" +
 
         "Price: Rs. " +
         product.price +
 
-        "%0ASize: " +
-        encodeURIComponent(selectedSize);
+        "\nSize: " +
+        selectedSize +
+
+        "\n\nProduct Image:\n" +
+        imageUrl;
 
 
     window.open(
 
         "https://wa.me/919764063326?text=" +
-        message,
+        encodeURIComponent(message),
 
         "_blank"
 
@@ -678,20 +713,32 @@ function orderProduct(index) {
     }
 
 
+    const product =
+        products[index];
+
+
+    const imageUrl =
+        getImageUrl(product.image);
+
+
     const message =
-        "Hello SAaj! I want to order this product.%0A%0A" +
+
+        "Hello SAaj! I want to order this product.\n\n" +
 
         "Price: Rs. " +
-        products[index].price +
+        product.price +
 
-        "%0ASize: " +
-        encodeURIComponent(selectedSize);
+        "\nSize: " +
+        selectedSize +
+
+        "\n\nProduct Image:\n" +
+        imageUrl;
 
 
     window.open(
 
         "https://wa.me/919764063326?text=" +
-        message,
+        encodeURIComponent(message),
 
         "_blank"
 
@@ -737,7 +784,7 @@ function updateCart() {
 
         cartItems.innerHTML += `
 
-            <div class="cart-item">
+            <div class ="cart-item">
 
                 <img
                     src="${item.image}"
@@ -981,7 +1028,7 @@ function orderCart() {
 
 
     let message =
-        "Hello SAaj! I want to order:%0A%0A";
+        "Hello SAaj! I want to order:\n\n";
 
 
     let total = 0;
@@ -995,32 +1042,41 @@ function orderCart() {
             item.quantity;
 
 
+        const imageUrl =
+            getImageUrl(item.image);
+
+
         message +=
 
             "Product " +
             (index + 1) +
 
-            "%0A" +
+            "\n" +
 
             "Price: Rs. " +
             item.price +
 
-            "%0A" +
+            "\n" +
 
             "Size: " +
-            encodeURIComponent(item.size) +
+            item.size +
 
-            "%0A" +
+            "\n" +
 
             "Quantity: " +
             item.quantity +
 
-            "%0A" +
+            "\n" +
 
             "Item Total: Rs. " +
             itemTotal +
 
-            "%0A%0A";
+            "\n" +
+
+            "Product Image:\n" +
+            imageUrl +
+
+            "\n\n";
 
 
         total += itemTotal;
@@ -1034,31 +1090,31 @@ function orderCart() {
         "Total: Rs. " +
         total +
 
-        "%0A%0A" +
+        "\n\n" +
 
-        "Customer Details:%0A" +
+        "Customer Details:\n" +
 
         "Name: " +
-        encodeURIComponent(name) +
+        name +
 
-        "%0APhone: " +
-        encodeURIComponent(phone) +
+        "\nPhone: " +
+        phone +
 
-        "%0AAddress: " +
-        encodeURIComponent(address) +
+        "\nAddress: " +
+        address +
 
-        "%0ACity: " +
-        encodeURIComponent(city) +
+        "\nCity: " +
+        city +
 
-        "%0APincode: " +
-        encodeURIComponent(pincode);
+        "\nPincode: " +
+        pincode;
 
 
 
     window.open(
 
         "https://wa.me/919764063326?text=" +
-        message,
+        encodeURIComponent(message),
 
         "_blank"
 
