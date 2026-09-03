@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SAaj - Fashion Store</title>
+
+    <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <h1>SAaj</h1>
+
+    <p>Fashion • Jewellery • Cosmetics</p>
+
+    <button
+        id="cartButton"
+        onclick="openCart()">
+
+        🛒 Cart
+
+        <span
+            id="cartCount"
+            class="cart-badge">
+            0
+        </span>
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<section class="search-section">
+
+    <h2>Find Products by Price</h2>
+
+    <input
+        type="number"
+        id="priceSearch"
+        placeholder="Enter price e.g. 250">
+
+</section>
+
+
+
+<!-- =========================
+     CATEGORY BUTTONS
+========================= -->
+
+<div class="categories">
+
+    <button
+        class="category-btn active"
+        onclick="filterCategory('all', this)">
+        All
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="filterCategory('clothes', this)">
+        Clothes
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="filterCategory('jewellery', this)">
+        Jewellery
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="filterCategory('cosmetics', this)">
+        Cosmetics
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section
+    id="productContainer"
+    class="products">
+</section>
+
+
+<div
+    id="noProducts">
+
+    No products found.
+
+</div>
+
+
+
+<!-- =========================
+     QUICK VIEW
+========================= -->
+
+<div
+    id="quickView"
+    class="quick-view-overlay">
+
+    <div class="quick-view-box">
+
+        <button
+            class="quick-close"
+            onclick="closeQuickView()">
+            ×
+        </button>
+
+
+        <div class="quick-image-box">
+
+            <img
+                id="quickImage"
+                src=""
+                alt="SAaj Product">
+
+        </div>
+
+
+        <div class="quick-details">
+
+            <span class="quick-label">
+                SAaj Collection
+            </span>
+
+            <h2>
+                Fashion Product
+            </h2>
+
+            <div
+                id="quickPrice"
+                class="quick-price">
+            </div>
+
+
+            <p class="quick-description">
+                Select your preferred size and
+                add this beautiful product to your cart.
+            </p>
+
+
+            <label class="quick-size-label">
+                Select Size
+            </label>
+
+            <select
+                id="quickSize"
+                class="quick-size">
+
+                <option value="">
+                    Select Size
+                </option>
+
+                <option value="S">
+                    S
+                </option>
+
+                <option value="M">
+                    M
+                </option>
+
+                <option value="L">
+                    L
+                </option>
+
+                <option value="XL">
+                    XL
+                </option>
+
+            </select>
+
+
+            <button
+                class="quick-cart-btn"
+                onclick="addQuickToCart()">
+
+                🛒 Add to Cart
+
+            </button>
+
+
+            <button
+                class="quick-whatsapp-btn"
+                onclick="orderQuickProduct()">
+
+                💬 Order on WhatsApp
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<div
+    id="cartBox">
+
+    <div class="cart-content">
+
+        <button
+            class="close-cart"
+            onclick="closeCart()">
+            ×
+        </button>
+
+
+        <h2>Your Cart</h2>
+
+
+        <div
+            id="cartItems">
+        </div>
+
+
+        <h3>
+
+            <span>
+                Total
+            </span>
+
+            <span>
+                ₹<span id="cartTotal">0</span>
+            </span>
+
+        </h3>
+
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="customer-details">
+
+            <h3>
+                Customer Details
+            </h3>
+
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Full Name">
+
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="10-digit Phone Number"
+                maxlength="10">
+
+
+            <textarea
+                id="customerAddress"
+                rows="3"
+                placeholder="Full Address">
+            </textarea>
+
+
+            <input
+                type="text"
+                id="customerCity"
+                placeholder="City">
+
+
+            <input
+                type="text"
+                id="customerPincode"
+                placeholder="6-digit Pincode"
+                maxlength="6">
+
+        </div>
+
+
+
+        <button
+            class="whatsapp-cart"
+            onclick="orderCart()">
+
+            💬 Order Cart on WhatsApp
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    id="cartToast">
+
+    Added to cart 🛒
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 SAaj. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
