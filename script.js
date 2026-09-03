@@ -22,7 +22,6 @@ for (let i = 1; i < 46; i++) {
 
     }
 
-
     products.push({
 
         category: "clothes",
